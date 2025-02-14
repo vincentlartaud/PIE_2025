@@ -16,18 +16,20 @@ const int maxThrottle = 2000;  // Vitesse max
 
 void tourne_gauche(int vitesse, int t){
   // Fait tourner le sous-marin à gauche pendant le temps t (en ms)
+  esc_gauche.writeMicroseconds(minThrottle);
   esc_droite.writeMicroseconds(vitesse);
   delay(t);
+  esc_gauche.writeMicroseconds(minThrottle);
   esc_droite.writeMicroseconds(minThrottle);
-  return;
 }
 
 void tourne_droite(int vitesse, int t){
   // Fait tourner le sous-marin à droite pendant le temps t (en ms)
   esc_gauche.writeMicroseconds(vitesse);
+  esc_droite.writeMicroseconds(minThrottle);
   delay(t);
   esc_gauche.writeMicroseconds(minThrottle);
-  return;
+  esc_droite.writeMicroseconds(minThrottle);
 }
 
 void avance(int vitesse, int t){
@@ -35,9 +37,8 @@ void avance(int vitesse, int t){
   esc_gauche.writeMicroseconds(vitesse);
   esc_droite.writeMicroseconds(vitesse);
   delay(t);
+  esc_gauche.writeMicroseconds(minThrottle);
   esc_droite.writeMicroseconds(minThrottle);
-  esc_droite.writeMicroseconds(minThrottle);
-  return;
 }
 
 
@@ -50,12 +51,14 @@ void setup() {
     Serial.println("Calibration de l'ESC en cours...");
     Serial.println("Débranchez la batterie, puis branchez-la quand vous y êtes invité.");
 
-    delay(2000);
+    delay(500);
     Serial.println("Branchez la batterie MAINTENANT !");
+    Serial.println("Appuyer sur une touche pour continuer");
+    while(Serial.available()==0); // Attendre réponse
+
     esc_gauche.writeMicroseconds(maxThrottle);  // Valeur max pour calibrer
     esc_droite.writeMicroseconds(maxThrottle);  // Valeur max pour calibrer
-    delay(3000);
-    
+    delay(1000);
     esc_gauche.writeMicroseconds(minThrottle);  // Retour à la valeur min
     esc_droite.writeMicroseconds(minThrottle);  // Retour à la valeur min
     Serial.println("Calibration terminée !");
@@ -66,10 +69,10 @@ void loop() {
   // Test : avancer 1s ; tourner à gauche 1s ; tourner à droite 1s
   int vitesse = 1500; // Vitesse intermédiaire pour tester
   int t = 1000;
-  avance(vitesse,t);
-  delay(t);
+  //avance(vitesse,t);
+  //delay(2*t);
   tourne_gauche(vitesse,t);
-  delay(t);
+  delay(2*t);
   tourne_droite(vitesse,t);
-  delay(t);
+  delay(2*t);
 }
