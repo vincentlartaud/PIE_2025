@@ -2,8 +2,8 @@
 
 % Coordonnées de l'enveloppe
 % A faire : fenêtre graphique pour sélectionner ces points
-points = [0 0; 1 0; 1 1; 0 1];
-% points = [0 0; 7 0; 10 3; 0 5];
+% points = [0 0; 1 0; 1 1; 0 1];
+points = [0 0; 7 0; 10 3; 0 5];
 
 % Nombre de zigzags
 p=5;
@@ -32,3 +32,7 @@ else
     legend("Balayage horizontal");
 end
 hold off;
+
+% Sauvegarde des coordonnées des points dans un fichier
+fichier="points.txt";
+% sauve_chemin(fichier,chemin);
