@@ -7,4 +7,4 @@ Ce dépot contient les programmes informatiques utilisés lors du projet :
 
 - **Arduino :** Programmes de comportement du sous-marin, déplacement, acquisition et stockage des données
 
-- **Matlab :** Programmes permettant de générer automatiquement le chemin à suivre par le sous-marin à partir d'un ensemble de points définis par l'utilisateur ; programmes de traitement des données à partir des données brutes extraites du sous-marin (affichage de la cartographie des zones déjà effectuées). $\alpha$
+- **Matlab :** Programmes permettant de générer automatiquement le chemin à suivre par le sous-marin à partir d'un ensemble de points définis par l'utilisateur ; programmes de traitement des données à partir des données brutes extraites du sous-marin (affichage de la cartographie des zones déjà effectuées).
