@@ -15,7 +15,7 @@ if ~conv
 end
 
 % Direction du balayage : 0 pour verticalement et 1 pour horizontalement
-dir=1;
+dir=0;
 
 % Génération du chemin
 chemin=genere_chemin(points,p,dir);
@@ -35,4 +35,4 @@ hold off;
 
 % Sauvegarde des coordonnées des points dans un fichier
 fichier="points.txt";
-% sauve_chemin(fichier,chemin);
+sauve_chemin(fichier,chemin);

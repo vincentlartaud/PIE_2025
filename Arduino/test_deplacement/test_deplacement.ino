@@ -48,6 +48,7 @@ void setup() {
     esc_gauche.attach(escPin_gauche);
     esc_droite.attach(escPin_droite);
 
+/*
     Serial.println("Calibration de l'ESC en cours...");
     Serial.println("Débranchez la batterie, puis branchez-la quand vous y êtes invité.");
 
@@ -63,16 +64,25 @@ void setup() {
     esc_droite.writeMicroseconds(minThrottle);  // Retour à la valeur min
     Serial.println("Calibration terminée !");
     delay(2000);
+*/
+    esc_gauche.writeMicroseconds(1000);
+    esc_droite.writeMicroseconds(1000);
+    delay(3000);  // Pause de sécurité
+
+    esc_gauche.writeMicroseconds(1200);
+    esc_droite.writeMicroseconds(1200);
+    delay(2000);
+
 }
 
 void loop() {
   // Test : avancer 1s ; tourner à gauche 1s ; tourner à droite 1s
   int vitesse = 1500; // Vitesse intermédiaire pour tester
   int t = 1000;
-  //avance(vitesse,t);
+  avance(vitesse,5*t);
+  delay(t);
+  //tourne_gauche(vitesse,t);
   //delay(2*t);
-  tourne_gauche(vitesse,t);
-  delay(2*t);
-  tourne_droite(vitesse,t);
-  delay(2*t);
+  //tourne_droite(vitesse,t);
+  //delay(2*t);
 }
