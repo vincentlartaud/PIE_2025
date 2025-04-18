@@ -41,7 +41,7 @@ void setup() {
   // Mise au neutre après calibration
   moteur1.writeMicroseconds(throttleNeutre);
   moteur2.writeMicroseconds(throttleNeutre);
-  delay(120000); // Pause de 2min le temps de refermer le bolide et de le mettre à l'eau
+  delay(60000); // Pause de 2min le temps de refermer le bolide et de le mettre à l'eau
 }
 
 void loop() {
@@ -50,7 +50,7 @@ void loop() {
     Serial.print(cycle);
     Serial.println(" ===");
 
-    /*
+    
     // Marche avant 5s
     Serial.println("Marche avant (5s)...");
     moteur1.writeMicroseconds(1350);
@@ -98,8 +98,8 @@ void loop() {
     moteur1.writeMicroseconds(throttleNeutre);
     moteur2.writeMicroseconds(throttleNeutre);
     delay(10000);
-    */
-
+    
+    /*
     // Marche avant 7s
     Serial.println("Marche avant (7s)...");
     moteur1.writeMicroseconds(1450);
@@ -135,6 +135,7 @@ void loop() {
     moteur1.writeMicroseconds(throttleNeutre);
     moteur2.writeMicroseconds(throttleNeutre);
     delay(2000);
+    */
   }
 
   // Fin de la boucle, arrêt complet

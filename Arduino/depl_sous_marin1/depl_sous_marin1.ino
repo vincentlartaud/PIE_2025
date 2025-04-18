@@ -1,5 +1,4 @@
 #include <Servo.h>
-#include <fonctions.h>
 
 Servo moteur1;
 Servo moteur2;
@@ -14,6 +13,9 @@ const int throttleAvant = 1300; // Marche avant
 const int throttleArriere = 1700; // Marche arrière
 const int throttleVirage = 200 ; // Virage (vitesse relative par rapport au neutre)
 
+// Importation des fonctions de déplacement 
+#include "fonctions.h"
+
 void setup(){
   Serial.begin(9600);
 
@@ -24,7 +26,7 @@ void setup(){
   calibrerESCs();
 
   // Mise au neutre après calibrage
-  avance(throttleNeutre,120000) // Pause de 2min le temps de refermer le bolide et de le mettre à l'eau
+  avance(throttleNeutre,60000); // Pause de 2min le temps de refermer le bolide et de le mettre à l'eau
 }
 
 void loop(){
@@ -41,7 +43,7 @@ void loop(){
     delay(2000);
     tourne_droite(throttleVirage,3000);
     delay(2000);
-    avance(5000);
+    avance(throttleAvant,5000);
   }
 
   // Fin de la boucle, arrêt complet
