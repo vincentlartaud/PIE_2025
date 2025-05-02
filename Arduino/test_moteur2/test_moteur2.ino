@@ -1,11 +1,10 @@
-
 #include <Servo.h>
 
 Servo moteur1;
 Servo moteur2;
 
-const int pinMoteur1 = 9;
-const int pinMoteur2 = 10;
+const int pinMoteur1 = 10;
+const int pinMoteur2 = 11;
 
 const int throttleStop = 1000;     // Moteur arrêté
 const int throttleNeutre = 1500;   // Point mort (neutre)
@@ -41,107 +40,65 @@ void setup() {
   // Mise au neutre après calibration
   moteur1.writeMicroseconds(throttleNeutre);
   moteur2.writeMicroseconds(throttleNeutre);
-  delay(60000); // Pause de 2min le temps de refermer le bolide et de le mettre à l'eau
+  delay(120000); // Pause de 2min le temps de refermer le bolide et de le mettre à l'eau
 }
 
 void loop() {
-  for (int cycle = 1; cycle <= 10; cycle++) {
+  
+  for(int i=0;i<3;i++){
+    // Marche avant 15s
+    Serial.println("Marche avant (15s)...");
+    moteur1.writeMicroseconds(1350);
+    moteur2.writeMicroseconds(1350);
+    delay(15000);
+
+    moteur1.writeMicroseconds(throttleNeutre);
+    moteur2.writeMicroseconds(throttleNeutre);
+    delay(5000);
+
+    // Virage 2s
+    Serial.println("Virage (2s)...");
+    moteur1.writeMicroseconds(1350);
+    moteur2.writeMicroseconds(1650);
+    delay(15000);
+
+    moteur1.writeMicroseconds(throttleNeutre);
+    moteur2.writeMicroseconds(throttleNeutre);
+    delay(5000);
+  }
+
+
+
+  /*
+  for (int cycle = 1; cycle <= 20; cycle++) {
     Serial.print("=== Cycle ");
     Serial.print(cycle);
     Serial.println(" ===");
 
-    
-    // Marche avant 5s
-    Serial.println("Marche avant (5s)...");
+    // Marche avant 20s
+    Serial.println("Marche avant (20s)...");
     moteur1.writeMicroseconds(1350);
     moteur2.writeMicroseconds(1350);
-    delay(5000);
+    delay(20000);
 
-    // Pause 2s
-    Serial.println("Pause (2s)...");
+    // Pause 20s
+    Serial.println("Pause (20s)...");
     moteur1.writeMicroseconds(throttleNeutre);
     moteur2.writeMicroseconds(throttleNeutre);
-    delay(2000);
+    delay(20000);
 
-    // Virage 3s
-    Serial.println("Virage (3s)...");
+    // Virage 1s
+    Serial.println("Virage (1s)...");
     moteur1.writeMicroseconds(1350);
     moteur2.writeMicroseconds(1650);
-    delay(3000);
-
-    // Pause 2s
-    Serial.println("Pause (2s)...");
-    moteur1.writeMicroseconds(throttleNeutre);
-    moteur2.writeMicroseconds(throttleNeutre);
-    delay(2000);
-
-    // Virage 3s
-    Serial.println("Virage (3s)...");
-    moteur1.writeMicroseconds(1650);
-    moteur2.writeMicroseconds(1350);
-    delay(3000);
-
-    // Pause 2s
-    Serial.println("Pause (2s)...");
-    moteur1.writeMicroseconds(throttleNeutre);
-    moteur2.writeMicroseconds(throttleNeutre);
-    delay(2000);
-
-    // Marche avant 10s
-    Serial.println("Marche avant (10s)...");
-    moteur1.writeMicroseconds(throttleAvant);
-    moteur2.writeMicroseconds(throttleAvant);
-    delay(10000);
-
-    // Pause 10s
-    Serial.println("Pause (10s)...");
-    moteur1.writeMicroseconds(throttleNeutre);
-    moteur2.writeMicroseconds(throttleNeutre);
-    delay(10000);
-    
-    /*
-    // Marche avant 7s
-    Serial.println("Marche avant (7s)...");
-    moteur1.writeMicroseconds(1450);
-    moteur2.writeMicroseconds(1450);
-    delay(7000);
-
-    // Pause 2s
-    Serial.println("Pause (2s)...");
-    moteur1.writeMicroseconds(throttleNeutre);
-    moteur2.writeMicroseconds(throttleNeutre);
-    delay(2000);
-
-    // Marche avant 7s
-    Serial.println("Marche avant (7s)...");
-    moteur1.writeMicroseconds(1320);
-    moteur2.writeMicroseconds(1320);
-    delay(7000);
-
-    // Pause 2s
-    Serial.println("Pause (2s)...");
-    moteur1.writeMicroseconds(throttleNeutre);
-    moteur2.writeMicroseconds(throttleNeutre);
-    delay(2000);
-
-    // Marche avant 7s
-    Serial.println("Marche avant (7s)...");
-    moteur1.writeMicroseconds(throttleAvant);
-    moteur2.writeMicroseconds(throttleAvant);
-    delay(7000);
-
-    // Pause 2s
-    Serial.println("Pause (2s)...");
-    moteur1.writeMicroseconds(throttleNeutre);
-    moteur2.writeMicroseconds(throttleNeutre);
-    delay(2000);
-    */
+    delay(1000);
   }
-
+  */
+  
   // Fin de la boucle, arrêt complet
   Serial.println("Séquence terminée ! Arrêt des moteurs.");
-  moteur1.writeMicroseconds(throttleStop);
-  moteur2.writeMicroseconds(throttleStop);
+  moteur1.writeMicroseconds(throttleNeutre);
+  moteur2.writeMicroseconds(throttleNeutre);
   while (true);  // Boucle infinie pour ne pas recommencer
 }
 

@@ -3,8 +3,8 @@
 Servo moteur1;
 Servo moteur2;
 
-const int pinMoteur1 = 9;
-const int pinMoteur2 = 10;
+const int pinMoteur1 = 10;
+const int pinMoteur2 = 11;
 
 // Définition des vitesses
 const int throttleStop = 2000; // Moteur arrêté
@@ -26,11 +26,20 @@ void setup(){
   calibrerESCs();
 
   // Mise au neutre après calibrage
-  avance(throttleNeutre,60000); // Pause de 2min le temps de refermer le bolide et de le mettre à l'eau
+  arret(); // Pause de 2min le temps de refermer le bolide et de le mettre à l'eau
+  delay(120000);
 }
 
 void loop(){
-  for (int i=1; i<=10; i++) {
+  for(int i=0;i<3;i++){
+      avance(throttleAvant,15000);
+      delay(5000);
+      tourne_droite(throttleVirage,2000);
+      delay(5000);
+    }
+
+  /*
+  for(int i=1; i<=10; i++) {
     Serial.print("=== Cycle ");
     Serial.print(i);
     Serial.println(" ===");
@@ -50,4 +59,5 @@ void loop(){
   Serial.println("Séquence terminée ! Arrêt des moteurs.");
   arret();
   while(true);  // Boucle infinie pour ne pas recommencer
+  */
 }
