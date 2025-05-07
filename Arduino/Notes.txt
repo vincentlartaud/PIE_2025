@@ -1,2 +1,0 @@
-Ponton : 20s => 5,86m
-=> Vitesse = 29cm/s

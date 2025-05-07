@@ -28,7 +28,7 @@ void tourne_droite(int delta_v, int t){
 }
 
 void arret(){
-    // Arrête les moteurs en cas de problème
+    // Arrête les moteurs
     moteur1.writeMicroseconds(throttleNeutre);
     moteur2.writeMicroseconds(throttleNeutre);
 }
